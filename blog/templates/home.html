@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+		<title></title>
+	</head>
+	<body>
+		<h1>Welcome to my blog!<h1>
+			{% if user.is_authenticated %}
+				<a class="btn btn-md btn-primary" href="/create/">Create New Post</a>
+				<a class="btn btn-md btn-default" href="/logout/">Logout</a>
+			{% else %}
+				<a class="btn btn-md btn-success" href="/login/">Login</a>
+				<a class="btn btn-md btn-warning" href="/signup/">Signup</a>
+			{% endif %}
+		<br><br>
+			{% for Post in all_posts %}
+				<div class="card" style="width: 18rem;">
+					<div class="card-body">
+						{% for i in img %}
+						<img src="{{ i.image.url }}">
+						{% endfor %}
+						<h2 class="card-title">{{Post.title}}</h2>
+						<h6>Posted: {{Post.timestamp|timesince}} ago</h6>
+						<a href="/post/{{Post.id}}/" class="card-link">Read More</a>
+					</div>
+				</div>
+				<hr>
+			{% endfor %}
+	</body>
+</html>
+<a href="/post/{{Post.id}}/"><h3>{{Post.title}}</h3></a>

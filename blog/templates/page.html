@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{post.title}}</title>
+</head>
+<body>
+	<a href="/">Back Home</a>
+<h1>{{post.title}}</h1>
+<b><p>Posted {{post.timestamp|timesince}} ago</p></b>
+<p><b>{{post.body|linebreaksbr}}</p></b>
+{% for i in img %}
+<img src="{{ i.image.url }}">
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form action="/create/{{all_posts.id}}" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<label>Title</label><br>
+		<input type="text" name="title"><br><br>
+		<label>Body</label><br>
+		<textarea name = "body"  rows = "8" cols = "80"></textarea><br>
+		<input type="file" name="image" multiple>
+		<input type="submit" value="Create"> <br><br>
+	</form>
+</body>
+</html>
